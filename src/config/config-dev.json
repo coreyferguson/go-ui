@@ -1,0 +1,19 @@
+{
+  "assets": {
+    "domain": "https://go-dev-assets.growme.fyi"
+  },
+  "auth": {
+    "identityPoolId": "",
+    "userPool": {
+      "client": {
+        "id": "",
+        "name": "go",
+        "redirectCallback": "https://go-dev.growme.fyi/oauth/callback",
+        "redirectSignout": "https://go-dev.growme.fyi/oauth/signout"
+      },
+      "id": "",
+      "webDomain": "auth-dev.growme.fyi"
+    }
+  },
+  "stage": "dev"
+}
