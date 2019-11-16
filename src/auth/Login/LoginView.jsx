@@ -1,6 +1,8 @@
 import Button from '../../form/Button.jsx';
+import clientService from '../../clientService';
 import config from 'config';
 import React from 'react';
+import sessionService from '../sessionService';
 
 const logoSrc = config.assets.domain + '/logo-small.png';
 
@@ -17,9 +19,14 @@ export default function LoginView() {
         </div>
         <div className='application'>
           <h2>url shortener</h2>
-          <Button className='logIn'>log in</Button>
+          <Button className='logIn' onClick={logIn}>log in</Button>
         </div>
       </div>
     </div>
   );
+}
+
+export function logIn() {
+  console.log('logging in');
+  sessionService.signin().then(() => clientService.navigate('/'));
 }
