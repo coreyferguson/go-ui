@@ -1,9 +1,21 @@
 import styled from 'styled-components';
-import './LoginGlobalStyles.scss';
 import { styles } from '../../theme/Theme.jsx';
 
 const LoginStyle = styled.div`
   text-align: center;
+  background: url('https://go-dev-assets.growme.fyi/elephants_large.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  @media screen and (min-width: 1170px) {
+    background-position: top 25px center;
+  }
+  @media screen and (max-width: 1169px) {
+    background-position: top 100px center;
+  }
 
   .outer {
     display: inline-flex;
