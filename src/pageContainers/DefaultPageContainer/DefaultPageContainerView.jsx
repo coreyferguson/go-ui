@@ -1,18 +1,18 @@
 import React from 'react';
-import Navigation from '../routing/Navigation';
+import Navigation from '../../routing/Navigation';
 import PropTypes from 'prop-types';
 
-export default function DefaultPageContainer(props) {
+export default function DefaultPageContainerView(props) {
   return (
     <div>
       <Navigation />
-      <section className='content'>
+      <section>
         {props.children}
       </section>
     </div>
   );
 }
 
-DefaultPageContainer.propTypes = {
+DefaultPageContainerView.propTypes = {
   children: PropTypes.element
 };

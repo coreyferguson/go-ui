@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '../../pageContainers/DefaultPageContainer.jsx';
+import Container from '../../pageContainers/DefaultPageContainer';
 
 export default function UrlListingView() {
   return (

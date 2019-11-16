@@ -4,6 +4,8 @@ import OAuthCallback from '../auth/OAuthCallback';
 import React from 'react';
 import sessionService from '../auth/sessionService';
 import UrlListing from '../urls/UrlListing';
+import SignOut from '../auth/SignOut';
+import OAuthSignOut from '../auth/OAuthSignOut';
 
 export default function AppRouter() {
   const Root = !sessionService.isUserSignedIn() ? SignIn : UrlListing;
@@ -11,6 +13,9 @@ export default function AppRouter() {
     <Router>
       <Route path='/' exact component={Root} />
       <Route path='/oauth/callback' exact component={OAuthCallback} />
+      <Route path='/oauth/signout' exact component={OAuthSignOut} />
+      <Route path='/signin' exact component={SignIn} />
+      <Route path='/signout' exact component={SignOut} />
     </Router>
   );
 }
