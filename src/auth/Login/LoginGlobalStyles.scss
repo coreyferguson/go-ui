@@ -1,0 +1,12 @@
+body {
+  background: url('https://go-dev-assets.growme.fyi/elephants_large.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media screen and (min-width: 1170px) {
+    background-position: top 25px center;
+  }
+  @media screen and (max-width: 1169px) {
+    background-position: top 100px center;
+  }
+}

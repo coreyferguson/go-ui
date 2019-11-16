@@ -43,8 +43,9 @@
   "dependencies": {
     "amazon-cognito-auth-js": "^1.3.2",
     "aws-sdk": "^2.521.0",
+    "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react": "^16.12.0"
+    "styled-components": "^4.4.1"
   }
 }
