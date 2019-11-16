@@ -19,7 +19,6 @@ export class SessionService {
       IdentityProvider: 'Google',
       UserPoolId: config.auth.userPool.id
     };
-    console.log('authData:', authData);
     this._auth = new CognitoAuth(authData);
     return this._auth;
   }

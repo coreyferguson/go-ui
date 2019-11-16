@@ -6,7 +6,7 @@ import sessionService from '../sessionService';
 
 const logoSrc = config.assets.domain + '/logo-small.png';
 
-export default function LoginView() {
+export default function SignInView() {
   return (
     <div className='outer'>
       <div className='inner'>
@@ -27,6 +27,5 @@ export default function LoginView() {
 }
 
 export function logIn() {
-  console.log('logging in');
   sessionService.signin().then(() => clientService.navigate('/'));
 }

@@ -2,6 +2,7 @@ import createStyle from './Style.jsx';
 import selectedStyles from './StyleDark';
 import PropTypes from 'prop-types';
 
+// TODO: Clean up this garbage pattern
 const Style = createStyle(selectedStyles);
 
 export default function Theme(props) {

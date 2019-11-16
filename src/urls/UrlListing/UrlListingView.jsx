@@ -1,6 +1,8 @@
 import React from 'react';
+import Container from '../../pageContainers/DefaultPageContainer.jsx';
+
 export default function UrlListingView() {
   return (
-    <h1>UrlListingView</h1>
+    <Container><h2>UrlListingView</h2></Container>
   );
 }

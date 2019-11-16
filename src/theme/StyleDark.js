@@ -20,6 +20,11 @@ const styles = {
   letter_spacing: '0.2px',
   font_size_spacious: '24px',
   font_size_cozy: '14px',
+
+  h1_spacious: '72px',
+  h1_cozy: '48px',
+  h2_spacious: '36px',
+  h2_cozy: '24px',
 };
 
 export default styles;
