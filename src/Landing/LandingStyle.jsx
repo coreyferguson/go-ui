@@ -5,16 +5,21 @@ const LandingStyle = styled.div`
   text-align: center;
   background: url('https://go-dev-assets.growme.fyi/elephants_large.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
   position: fixed;
   height: 100%;
   width: 100%;
 
   @media screen and (min-width: 1170px) {
-    background-position: top 25px center;
+    background-size: cover;
+    background-position: top 75px center;
   }
-  @media screen and (max-width: 1169px) {
-    background-position: top 100px center;
+  @media screen and (min-width: 700px) and (max-width: 1169px) {
+    background-size: cover;
+    background-position: top 125px center;
+  }
+  @media screen and (max-width: 699px) {
+    background-size: contain;
+    background-position: bottom;
   }
 
   .outer {
@@ -44,10 +49,6 @@ const LandingStyle = styled.div`
 
     @media screen and (max-width: 1649px and min-width: 1470px;) {
       margin-top: 20px;
-    }
-
-    @media screen and (max-width: 1170px) {
-      background-position:
     }
 
     display: inline-flex;
