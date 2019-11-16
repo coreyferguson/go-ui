@@ -4,7 +4,7 @@ import clientService from '../../clientService';
 
 export default function OAuthCallbackView() {
   useEffect(() => {
-    return sessionService.processCallback(clientService.getUrl()).then(() => {
+    sessionService.processCallback(clientService.getUrl()).then(() => {
       clientService.navigate('/');
     });
   });

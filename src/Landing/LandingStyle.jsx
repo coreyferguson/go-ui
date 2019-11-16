@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { styles } from '../../theme/Theme.jsx';
+import { styles } from '../theme/Theme.jsx';
 
-const SignInStyle = styled.div`
+const LandingStyle = styled.div`
   text-align: center;
   background: url('https://go-dev-assets.growme.fyi/elephants_large.jpg');
   background-repeat: no-repeat;
@@ -68,4 +68,4 @@ const SignInStyle = styled.div`
   }
 `;
 
-export default SignInStyle;
+export default LandingStyle;
