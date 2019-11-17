@@ -1,2 +1,5 @@
 
 cloudFrontAlias: go.growme.fyi
+cors:
+  allowedOrigins:
+    - https://go.growme.fyi

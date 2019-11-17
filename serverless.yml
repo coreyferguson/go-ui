@@ -23,6 +23,16 @@ resources:
         WebsiteConfiguration:
           ErrorDocument: index.html
           IndexDocument: index.html
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - PUT
+                - GET
+              AllowedOrigins: ${file(./serverless-${self:provider.stage}.yml):cors.allowedOrigins}
+              MaxAge: 3000
+
 
     S3PublicReadPolicy:
       Type: AWS::S3::BucketPolicy
@@ -85,7 +95,7 @@ resources:
                   - TLSv1
                   - TLSv1.1
                   - TLSv1.2
-              DomainName: !GetAtt S3BucketWebApp.DomainName
+              DomainName: !GetAtt S3BucketWebApp.RegionalDomainName
               Id: !Ref S3BucketWebApp
           PriceClass: PriceClass_100
           ViewerCertificate:
@@ -105,3 +115,41 @@ resources:
         HostedZoneName: growme.fyi.
         Name: ${file(./serverless-${self:provider.stage}.yml):cloudFrontAlias}
         Type: 'A'
+
+    ManagedPolicyS3BucketAccess:
+      Type: AWS::IAM::ManagedPolicy
+      Properties:
+        Description: S3 bucket upload access
+        ManagedPolicyName: growme-go-ui-${self:provider.stage}-s3-access
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - "s3:GetObject"
+                - "s3:PutObject"
+              Resource:
+                - !Join
+                  - ''
+                  - - !GetAtt S3BucketWebApp.Arn
+                    - '/*'
+            - Effect: Deny
+              Action:
+                - "s3:GetObject"
+                - "s3:PutObject"
+              Resource:
+                - !Join
+                  - ''
+                  - - !GetAtt S3BucketWebApp.Arn
+                    - '/index.html'
+            - Effect: Deny
+              Action:
+                - "s3:GetObject"
+                - "s3:PutObject"
+              Resource:
+                - !Join
+                  - ''
+                  - - !GetAtt S3BucketWebApp.Arn
+                    - '/main.bundle.js'
+        Roles:
+          - growme_auth_${self:provider.stage}_identity_pool_auth_role

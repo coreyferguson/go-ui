@@ -15,5 +15,8 @@
       "webDomain": "auth.growme.fyi"
     }
   },
+  "urls": {
+    "s3Bucket": "growme-go-ui"
+  },
   "stage": "prod"
 }

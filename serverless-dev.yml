@@ -1,2 +1,6 @@
 
 cloudFrontAlias: go-dev.growme.fyi
+cors:
+  allowedOrigins:
+    - https://go-local.growme.fyi:9000
+    - https://go-dev.growme.fyi
