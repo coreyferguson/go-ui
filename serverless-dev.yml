@@ -4,3 +4,5 @@ cors:
   allowedOrigins:
     - https://go-local.growme.fyi:9000
     - https://go-dev.growme.fyi
+userPoolId: us-west-2_GdupGub69
+identityPoolId: us-west-2:a11a7ec9-d220-4b53-bfb8-1359e0c1d255

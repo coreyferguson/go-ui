@@ -30,9 +30,11 @@ resources:
               AllowedMethods:
                 - PUT
                 - GET
+                - HEAD
               AllowedOrigins: ${file(./serverless-${self:provider.stage}.yml):cors.allowedOrigins}
               MaxAge: 3000
-
+              ExposedHeaders:
+                - x-amz-website-redirect-location
 
     S3PublicReadPolicy:
       Type: AWS::S3::BucketPolicy
@@ -116,40 +118,50 @@ resources:
         Name: ${file(./serverless-${self:provider.stage}.yml):cloudFrontAlias}
         Type: 'A'
 
-    ManagedPolicyS3BucketAccess:
-      Type: AWS::IAM::ManagedPolicy
+    IAMRoleCreator:
+      Type: AWS::IAM::Role
       Properties:
-        Description: S3 bucket upload access
-        ManagedPolicyName: growme-go-ui-${self:provider.stage}-s3-access
-        PolicyDocument:
+        RoleName: go-${self:provider.stage}-ui-url-creator
+        AssumeRolePolicyDocument:
           Version: "2012-10-17"
           Statement:
             - Effect: Allow
-              Action:
-                - "s3:GetObject"
-                - "s3:PutObject"
-              Resource:
-                - !Join
-                  - ''
-                  - - !GetAtt S3BucketWebApp.Arn
-                    - '/*'
-            - Effect: Deny
-              Action:
-                - "s3:GetObject"
-                - "s3:PutObject"
-              Resource:
-                - !Join
-                  - ''
-                  - - !GetAtt S3BucketWebApp.Arn
-                    - '/index.html'
-            - Effect: Deny
-              Action:
-                - "s3:GetObject"
-                - "s3:PutObject"
-              Resource:
-                - !Join
-                  - ''
-                  - - !GetAtt S3BucketWebApp.Arn
-                    - '/main.bundle.js'
-        Roles:
-          - growme_auth_${self:provider.stage}_identity_pool_auth_role
+              Principal:
+                Federated: cognito-identity.amazonaws.com
+              Action: sts:AssumeRoleWithWebIdentity
+              Condition:
+                StringEquals:
+                  cognito-identity.amazonaws.com:aud: ${file(./serverless-${self:provider.stage}.yml):identityPoolId}
+                ForAnyValue:StringLike:
+                  cognito-identity.amazonaws.com:amr: authenticated
+        Policies:
+          - PolicyName: growme_auth_${self:provider.stage}
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - "mobileanalytics:PutEvents"
+                    - "cognito-sync:*"
+                  Resource: "*"
+          - PolicyName: url-creator
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - "s3:GetObject"
+                    - "s3:PutObject"
+                  Resource:
+                    - !Join
+                      - ''
+                      - - !GetAtt S3BucketWebApp.Arn
+                        - '/*'
+
+    UserPoolGroupCreator:
+      Type: AWS::Cognito::UserPoolGroup
+      Properties:
+        Description: Creators of vanity URLs
+        GroupName: go-${self:provider.stage}-ui-creator
+        RoleArn: !GetAtt IAMRoleCreator.Arn
+        UserPoolId: ${file(./serverless-${self:provider.stage}.yml):userPoolId}
