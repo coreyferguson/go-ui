@@ -4,8 +4,9 @@ import urlService from '../urlService';
 
 export default function UrlListingView() {
   useEffect(() => {
-    urlService.listUrls().then(urls => {
-      console.log('urls:', urls);
+    const vanity = 'vanity';
+    urlService.getUrl({ vanity }).then(url => {
+      console.log('url:', url);
     });
   })
   return (
