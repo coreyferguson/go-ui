@@ -25,6 +25,8 @@ const styles = {
   h1_cozy: '48px',
   h2_spacious: '36px',
   h2_cozy: '24px',
+
+  border_radius: '10px 5px 10px 5px',
 };
 
 export default styles;

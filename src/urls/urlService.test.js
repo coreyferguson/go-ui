@@ -1,4 +1,5 @@
 import service from './urlService';
+import AWS from 'aws-sdk';
 
 jest.mock('../auth/sessionService');
 
@@ -7,28 +8,27 @@ describe('urlService', () => {
   afterEach(() => {
     jest.resetAllMocks();
     delete service._configureAwsPromise;
+    AWS.reset();
   });
 
   test('_configureAws - successfully configured', () => {
     expect(service._configureAwsPromise).toBeUndefined();
     const refreshPromiseRes = Promise.resolve();
-    const spy = jest.spyOn(AWS.config.credentials, 'refreshPromise').mockImplementation(() => refreshPromiseRes);
+    jest.spyOn(AWS.config.credentials, 'refreshPromise').mockImplementation(() => refreshPromiseRes);
     const res = service._configureAws();
     expect(res).toEqual(refreshPromiseRes);
     expect(service._configureAwsPromise).toEqual(refreshPromiseRes);
-    spy.mockReset();
   });
 
   test('_configureAws - reuses existing promise if previously configured', async () => {
     expect(service._configureAwsPromise).toBeUndefined();
     let counter = 0;
-    const spy = jest
+    jest
       .spyOn(AWS.config.credentials, 'refreshPromise')
       .mockImplementation(() => new Promise(resolve => resolve(counter++)));
     const res1 = await service._configureAws();
     const res2 = await service._configureAws();
     expect(res1).toEqual(res2);
-    spy.mockReset();
   });
 
   test('listUrls - exclude default web assets', async () => {
@@ -65,15 +65,14 @@ describe('urlService', () => {
         "KeyCount": 3
       })
     });
-    const spy = jest.spyOn(AWS, 'S3').mockImplementation(() => s3);
+    jest.spyOn(AWS, 'S3').mockImplementation(() => s3);
     const urls = await service.listUrls();
     expect(urls.items).toHaveLength(1);
     expect(urls.items).toEqual([ 'vanity' ]);
-    spy.mockReset();
   });
 
   test('listUrls - authorization denied', async () => {
-    const spy = jest.spyOn(AWS.config.credentials, 'refreshPromise').mockImplementation(() => Promise.reject({
+    jest.spyOn(AWS.config.credentials, 'refreshPromise').mockImplementation(() => Promise.reject({
       "message": "... denied this request.",
       "code": "NotAuthorizedException",
       "time": "2019-11-22T00:37:30.492Z",
@@ -83,7 +82,6 @@ describe('urlService', () => {
       "retryDelay": 20.977039859283874
     }));
     await expect(service.listUrls()).rejects.toHaveProperty('code', 'NotAuthorizedException');
-    spy.mockReset();
   });
 
   test('listUrls - pagination', async () => {
@@ -104,15 +102,13 @@ describe('urlService', () => {
         });
       }
     });
-    const spies = [];
-    spies.push(jest.spyOn(AWS, 'S3').mockImplementation(() => s3));
+    jest.spyOn(AWS, 'S3').mockImplementation(() => s3);
     const page1 = await service.listUrls();
     expect(page1).toHaveProperty('hasNext', true);
     expect(page1.items).toEqual(['one']);
     const page2 = await service.listUrls({ next: page1.next });
     expect(page2).toHaveProperty('hasNext', false);
     expect(page2.items).toEqual(['two']);
-    spies.forEach(spy => spy.mockReset());
   });
 
   test('getUrl - success', async () => {
@@ -126,14 +122,13 @@ describe('urlService', () => {
         "Metadata": {}
       })
     });
-    const spy = jest.spyOn(AWS, 'S3').mockImplementation(() => s3);
+    jest.spyOn(AWS, 'S3').mockImplementation(() => s3);
     const url = await service.getUrl();
     expect(url).toEqual('https://redirect-location.com');
-    spy.mockReset();
   });
 
   test('getUrl - authorization denied', async () => {
-    const spy = jest.spyOn(AWS.config.credentials, 'refreshPromise').mockImplementation(() => Promise.reject({
+    jest.spyOn(AWS.config.credentials, 'refreshPromise').mockImplementation(() => Promise.reject({
       "message": "... denied this request.",
       "code": "NotAuthorizedException",
       "time": "2019-11-22T00:37:30.492Z",
@@ -143,7 +138,6 @@ describe('urlService', () => {
       "retryDelay": 20.977039859283874
     }));
     await expect(service.getUrl('vanity')).rejects.toHaveProperty('code', 'NotAuthorizedException');
-    spy.mockReset();
   });
 });
 

@@ -9,7 +9,10 @@ const envConfig = path.resolve(__dirname, `src/config/config-${stage}.json`);
 module.exports = {
   entry: './src/index.js',
   resolve: {
-    alias: { config: envConfig }
+    alias: { appConfig: envConfig }
+  },
+  externals: {
+    'aws-sdk': 'AWS'
   },
   plugins: [
     new CleanWebpackPlugin(),

@@ -1,8 +1,6 @@
-
-export class UrlService {
-  async listUrls() {
-    console.log('mock url service:listUrls()');
-  }
+class UrlService {
+  async listUrls() {}
+  async getUrl() {}
   async saveUrl() {}
 }
 

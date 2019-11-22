@@ -1,5 +1,6 @@
 import sessionService from '../auth/sessionService';
-import config from 'config';
+import config from 'appConfig';
+import AWS from 'aws-sdk';
 
 export class UrlService {
   constructor() {
@@ -36,7 +37,9 @@ export class UrlService {
     return res.WebsiteRedirectLocation;
   }
 
-  saveUrl(vanity, url) {
+  async saveUrl(vanity, url) {
+    await this._configureAws();
+    const s3 = this._getS3();
     return s3.putObject({
       Bucket: config.urls.s3Bucket,
       Key: vanity,

@@ -1,6 +1,6 @@
 import Button from '../form/Button.jsx';
 import clientService from '../clientService';
-import config from 'config';
+import config from 'appConfig';
 import React from 'react';
 import sessionService from '../auth/sessionService';
 

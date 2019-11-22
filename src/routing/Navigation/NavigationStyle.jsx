@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { styles } from '../../theme/Theme.jsx';
-import config from 'config';
+import config from 'appConfig';
 
 export default styled.div`
   > nav {

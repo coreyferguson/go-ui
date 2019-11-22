@@ -1,24 +1,31 @@
-
-const config = {
-  credentials: {
-    refreshPromise: async () => {},
-  }
+const credentials = {
+  refreshPromise: () => Promise.resolve()
 };
+
+class CognitoIdentityCredentials {
+  constructor() {
+    return credentials;
+  }
+}
 
 class S3 {
   listObjectsV2() {
     return {
       promise: async () => {}
-    }
+    };
   }
 }
 
-class CognitoIdentityCredentials {
+class AWS {
   constructor() {
-    return config.credentials;
+    this.reset();
+  }
+
+  reset() {
+    this.config = { credentials };
+    this.S3 = S3;
+    this.CognitoIdentityCredentials = CognitoIdentityCredentials;
   }
 }
 
-const AWS = { CognitoIdentityCredentials, config, S3 };
-
-module.exports = AWS;
+module.exports = new AWS();
