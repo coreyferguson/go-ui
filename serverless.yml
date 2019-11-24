@@ -72,12 +72,12 @@ resources:
               - HEAD
               - GET
             Compress: false
-            DefaultTTL: 3600
+            DefaultTTL: 150
             ForwardedValues:
               Cookies:
                 Forward: none
               QueryString: true
-            MaxTTL: 18000
+            MaxTTL: 300
             MinTTL: 5
             SmoothStreaming: false
             TargetOriginId: !Ref S3BucketWebApp
@@ -97,7 +97,7 @@ resources:
                   - TLSv1
                   - TLSv1.1
                   - TLSv1.2
-              DomainName: !GetAtt S3BucketWebApp.WebsiteURL
+              DomainName: !GetAtt S3BucketWebApp.RegionalDomainName
               Id: !Ref S3BucketWebApp
           PriceClass: PriceClass_100
           ViewerCertificate:
