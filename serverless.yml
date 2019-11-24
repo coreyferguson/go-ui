@@ -97,7 +97,7 @@ resources:
                   - TLSv1
                   - TLSv1.1
                   - TLSv1.2
-              DomainName: !GetAtt S3BucketWebApp.RegionalDomainName
+              DomainName: !GetAtt S3BucketWebApp.WebsiteURL
               Id: !Ref S3BucketWebApp
           PriceClass: PriceClass_100
           ViewerCertificate:

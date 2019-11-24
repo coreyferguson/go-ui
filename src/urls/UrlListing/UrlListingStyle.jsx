@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { styles } from '../../theme/Theme.jsx';
 
 const UrlListingStyle = styled.div`
+  .create-url {
+  }
+
   .zero-state {
     i.material-icons {
       font-size: ${styles.h1_spacious};

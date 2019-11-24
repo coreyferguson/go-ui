@@ -16,7 +16,9 @@
     }
   },
   "urls": {
-    "s3Bucket": "growme-go-dev-ui"
+    "s3Bucket": "growme-go-dev-ui",
+    "domain": "https://go-local.growme.fyi:9000",
+    "redirectDomain": "https://go-dev.growme.fyi"
   },
   "stage": "local"
 }

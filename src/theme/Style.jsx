@@ -44,5 +44,34 @@ export default styles => {
 
     }
 
+    input[type='text'] {
+      background-color: ${styles.background_2};
+      border-width: 0;
+      color: ${styles.foreground_2};
+      font-size: ${styles.font_size_spacious};
+      padding: 5px 10px 5px 10px;
+      margin: 0 5px 0 5px;
+      border-bottom: 1px solid ${styles.foreground_2};
+    }
+
+    input[type='text']:focus {
+      outline: 0;
+      border-bottom: 1px solid ${styles.primary};
+    }
+
+    button {
+      background-color: ${styles.primary};
+      border: 0;
+      color: ${styles.foreground_2};
+      font-size: ${styles.font_size_spacious};
+      padding: 5px 10px 5px 10px;
+      margin: 0 5px 0 5px;
+      border-radius: ${styles.border_radius};
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: ${styles.primary_darken_2};
+    }
   `;
 }
