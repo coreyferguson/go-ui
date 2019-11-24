@@ -4,6 +4,21 @@ import { styles } from '../../theme/Theme.jsx';
 
 const UrlListingStyle = styled.div`
   .create-url {
+    display: flex;
+    @media screen and (min-width: 800px) {
+      flex-flow: row nowrap;
+      > .vanity {
+        max-width: 10em;
+      }
+      > .url {
+        flex-grow: 1;
+      }
+    }
+    @media screen and (max-width: 799px) {
+      flex-flow: column nowrap;
+      > * {
+      }
+    }
   }
 
   .zero-state {

@@ -48,10 +48,15 @@ export default styles => {
       background-color: ${styles.background_2};
       border-width: 0;
       color: ${styles.foreground_2};
-      font-size: ${styles.font_size_spacious};
       padding: 5px 10px 5px 10px;
-      margin: 0 5px 0 5px;
+      margin: 0 5px 5px 5px;
       border-bottom: 1px solid ${styles.foreground_2};
+      @media screen and (max-width: 799px) {
+        font-size: ${styles.font_size_cozy};
+      }
+      @media screen and (min-width: 800px) {
+        font-size: ${styles.font_size_spacious};
+      }
     }
 
     input[type='text']:focus {
@@ -63,11 +68,16 @@ export default styles => {
       background-color: ${styles.primary};
       border: 0;
       color: ${styles.foreground_2};
-      font-size: ${styles.font_size_spacious};
       padding: 5px 10px 5px 10px;
       margin: 0 5px 0 5px;
       border-radius: ${styles.border_radius};
       cursor: pointer;
+      @media screen and (max-width: 799px) {
+        font-size: ${styles.font_size_cozy};
+      }
+      @media screen and (min-width: 800px) {
+        font-size: ${styles.font_size_spacious};
+      }
     }
 
     button:hover {
