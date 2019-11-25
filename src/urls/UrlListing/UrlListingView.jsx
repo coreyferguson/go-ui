@@ -1,20 +1,26 @@
 import React from 'react';
-import Container from '../../pageContainers/DefaultPageContainer';
+import DefaultPageContainer from '../../pageContainers/DefaultPageContainer';
+import SimpleMessagePageContainer from '../../pageContainers/SimpleMessagePageContainer';
 import urlService from '../urlService';
 import config from 'appConfig';
 
 export default function UrlListingView() {
   const [ urls, setUrls ] = React.useState({ items: [] });
   const [ refVanity, refUrl ] = [ React.useRef(), React.useRef() ];
-  React.useEffect(() => { urlService.listUrls().then(setUrls) }, []);
+  const [ isLoading, setLoading ] = React.useState(true);
+  React.useEffect(() => { urlService.listUrls().then(urls => {
+    setUrls(urls);
+    setLoading(false);
+  }) }, []);
   const onCreate = e => handleCreate({ e, refVanity, refUrl, urls, setUrls });
+  if (isLoading) return <SimpleMessagePageContainer><h1>loading</h1></SimpleMessagePageContainer>
   return (
-    <Container>
+    <DefaultPageContainer>
       <div>
         {showUrlCreation(onCreate, refVanity, refUrl)}
         {showZeroState(urls) || showUrls(urls)}
       </div>
-    </Container>
+    </DefaultPageContainer>
   );
 }
 

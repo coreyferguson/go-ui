@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import sessionService from '../sessionService';
 import clientService from '../../clientService';
+import SimpleMessagePageContainer from '../../pageContainers/SimpleMessagePageContainer';
 
 export default function OAuthCallbackView() {
   useEffect(() => {
@@ -9,6 +10,6 @@ export default function OAuthCallbackView() {
     });
   });
   return (
-    <h1>OAuthCallbackView</h1>
+    <SimpleMessagePageContainer><h1>loading</h1></SimpleMessagePageContainer>
   );
 }
