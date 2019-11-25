@@ -47,10 +47,65 @@ describe('UrlListingView', () => {
     let wrapper;
     await act(async () => {
       wrapper = shallow(<View />)
-      wrapper.update();
     });
     expect(wrapper.find('.zero-state')).toHaveLength(0);
     expect(wrapper.find('.url-listing')).toHaveLength(1);
     expect(wrapper.find('.url-listing').text()).toContain('onetwothree');
+  });
+
+  test('submit form', async () => {
+    const saveUrl = jest.spyOn(urlService, 'saveUrl');
+    jest.spyOn(React, 'useRef')
+      .mockImplementationOnce(() => ({ current: { value: 'refVanityValue', focus: () => {} } }))
+      .mockImplementationOnce(() => ({ current: { value: 'refUrlValue', focus: () => {} } }));
+    let wrapper;
+    global.navigator.permissions = { query: jest.fn(() => Promise.resolve({ state: 'granted' })) };
+    global.navigator.clipboard = { writeText: jest.fn(() => Promise.resolve()) };
+    global.window.alert = jest.fn();
+    const formReset = jest.fn();
+    await act(async () => {
+      wrapper = shallow(<View />);
+      wrapper.find('.create-url').simulate('submit', {
+        preventDefault: () => {},
+        target: { reset: formReset }
+      });
+    });
+    expect(saveUrl).toHaveBeenCalled();
+    expect(formReset).toHaveBeenCalled();
+    expect(global.navigator.clipboard.writeText).toHaveBeenCalled();
+    expect(global.window.alert).toHaveBeenCalled();
+    expect(wrapper.find('.url-listing').text()).toBe('refVanityValue');
+  });
+
+  test('save a new url', async () => {
+    jest.spyOn(React, 'useRef')
+      .mockImplementationOnce(() => ({ current: { value: 'refVanityValue', focus: () => {} } }))
+      .mockImplementationOnce(() => ({ current: { value: 'refUrlValue', focus: () => {} } }));
+    const setUrls = jest.fn();
+    jest.spyOn(React, 'useState').mockImplementationOnce(() => [ { items: [ 'existingItem' ] }, setUrls ]);
+    await act(async () => {
+      const wrapper = shallow(<View />);
+      wrapper.find('.create-url').simulate('submit', {
+        preventDefault: () => {},
+        target: { reset: () => {} }
+      });
+    });
+    expect(setUrls).toHaveBeenCalledWith({ items: [ 'refVanityValue', 'existingItem' ] });
+  });
+
+  test('save an existing url', async () => {
+    jest.spyOn(React, 'useRef')
+      .mockImplementationOnce(() => ({ current: { value: 'existingItem', focus: () => {} } }))
+      .mockImplementationOnce(() => ({ current: { value: 'refUrlValue', focus: () => {} } }));
+    const setUrls = jest.fn();
+    jest.spyOn(React, 'useState').mockImplementationOnce(() => [ { items: [ 'existingItem' ] }, setUrls ]);
+    await act(async () => {
+      const wrapper = shallow(<View />);
+      wrapper.find('.create-url').simulate('submit', {
+        preventDefault: () => {},
+        target: { reset: () => {} }
+      });
+    });
+    expect(setUrls).not.toHaveBeenCalled();
   });
 });

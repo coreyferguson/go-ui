@@ -4,23 +4,10 @@ import urlService from '../urlService';
 import config from 'appConfig';
 
 export default function UrlListingView() {
-  const [ urls, setUrls ] = React.useState();
+  const [ urls, setUrls ] = React.useState({ items: [] });
   const [ refVanity, refUrl ] = [ React.useRef(), React.useRef() ];
   React.useEffect(() => { urlService.listUrls().then(setUrls) }, []);
-  const onCreate = e => {
-    e.preventDefault();
-    const vanity = refVanity.current.value;
-    if (!urls.items.includes(vanity))
-    setUrls({
-      ...urls,
-      items: [ vanity, ...urls.items ]
-    });
-    const url = refUrl.current.value;
-    urlService.saveUrl(vanity, url);
-    copy(vanity);
-    e.target.reset();
-    refVanity.current.focus();
-  };
+  const onCreate = e => handleCreate({ e, refVanity, refUrl, urls, setUrls });
   return (
     <Container>
       <div>
@@ -29,6 +16,19 @@ export default function UrlListingView() {
       </div>
     </Container>
   );
+}
+
+function handleCreate({ e, refVanity, refUrl, urls, setUrls }) {
+  e.preventDefault();
+  const vanity = refVanity.current.value;
+  if (!urls.items.includes(vanity)) {
+    setUrls({ ...urls, items: [ vanity, ...urls.items ] })
+  }
+  const url = refUrl.current.value;
+  urlService.saveUrl(vanity, url);
+  copy(vanity);
+  e.target.reset();
+  refVanity.current.focus();
 }
 
 function showUrlCreation(onCreate, refVanity, refUrl) {
@@ -62,7 +62,10 @@ function showUrls(urls) {
 }
 
 function copy(vanity) {
-  navigator.permissions.query({ name: 'clipboard-write' }).then(result => {
+  if (!navigator || !navigator.permissions || !navigator.permissions.query) return;
+  const promise = navigator.permissions.query({ name: 'clipboard-write' })
+  if (!promise) return;
+  promise.then(result => {
     if (result.state == 'granted' || result.state == 'prompt') {
       navigator.clipboard.writeText(`${config.urls.redirectDomain}/${vanity}`).then(() => {
         alert('vanity url copied to clipboard');

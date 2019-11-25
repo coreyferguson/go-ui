@@ -11,10 +11,10 @@ export default styled.div`
     align-items: center;
 
     @media screen and (max-width: 799px) {
-      height: 50px;
+      height: 45px;
     }
     @media screen and (min-width: 800px) {
-      height: 70px;
+      height: 80px;
     }
 
     ul {
@@ -63,18 +63,20 @@ export default styled.div`
     }
 
     .logo {
-      height: 70px;
       background-image: url('${config.assets.domain}/logo-small.png');
       background-repeat: no-repeat;
       display: flex;
-      padding-top: 10px;
       align-items: center;
       @media screen and (max-width: 799px) {
+        height: 40px;
         background-position: 5px;
         background-size: 30px;
         padding-left: 40px;
+        padding-top: 5px;
       }
       @media screen and (min-width: 800px) {
+        padding-top: 10px;
+        height: 70px;
         background-position: 10px;
         background-size: 40px;
         padding-left: 55px;
