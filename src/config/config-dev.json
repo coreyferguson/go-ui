@@ -1,6 +1,6 @@
 {
   "assets": {
-    "domain": "https://go-dev-assets.growme.fyi"
+    "domain": "https://dev-assets.growme.fyi"
   },
   "auth": {
     "identityPoolId": "us-west-2:a11a7ec9-d220-4b53-bfb8-1359e0c1d255",
@@ -8,8 +8,8 @@
       "client": {
         "id": "73lc7mfni9ngmgl8kuc8v2qjfm",
         "name": "go",
-        "redirectCallback": "https://go-dev.growme.fyi/oauth/callback",
-        "redirectSignout": "https://go-dev.growme.fyi/oauth/signout"
+        "redirectCallback": "https://dev.growme.fyi/oauth/callback",
+        "redirectSignout": "https://dev.growme.fyi/oauth/signout"
       },
       "id": "us-west-2_GdupGub69",
       "webDomain": "auth-dev.growme.fyi"
@@ -17,8 +17,8 @@
   },
   "urls": {
     "s3Bucket": "growme-go-dev-ui",
-    "domain": "https://go-dev.growme.fyi",
-    "redirectDomain": "https://go-dev.growme.fyi"
+    "domain": "https://dev.growme.fyi",
+    "redirectDomain": "https://dev.growme.fyi"
   },
   "stage": "dev"
 }
