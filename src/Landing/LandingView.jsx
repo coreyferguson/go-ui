@@ -4,24 +4,25 @@ import config from 'appConfig';
 import React from 'react';
 import sessionService from '../auth/sessionService';
 
-const logoSrc = config.assets.domain + '/logo-small.png';
+const logoSrc = config.assets.domain + '/logo_large.jpg';
 
 export default function LandingView() {
   return (
-    <div className='outer'>
-      <div className='inner'>
+    <div className='container'>
+
+      <section className='primary'>
         <div className='organization'>
-          <div className='logo-container'>
-            <img className='logo' src={logoSrc} />
-            <h1 className='org-abbreviation'>SCIL</h1>
-          </div>
-          <h2 className='org-name'>Social Compassion in Legislation</h2>
+          <img className='logo' src={logoSrc} />
+          <h1 className='abbreviation'>growme.fyi</h1>
         </div>
-        <div className='application'>
-          <h2>url shortener</h2>
-          <Button className='logIn' onClick={logIn}>log in</Button>
+        <div className='login-container'>
+          <Button className='login' onClick={logIn}>log in</Button>
         </div>
-      </div>
+      </section>
+
+      <section className='secondary'>
+      </section>
+
     </div>
   );
 }

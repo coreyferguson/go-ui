@@ -1,71 +1,93 @@
 import styled from 'styled-components';
 import { styles } from '../theme/Theme.jsx';
+import config from 'appConfig';
 
 const LandingStyle = styled.div`
-  text-align: center;
-  background: url('https://go-dev-assets.growme.fyi/elephants_large.jpg');
-  background-repeat: no-repeat;
-  position: fixed;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
 
-  @media screen and (min-width: 1170px) {
-    background-size: cover;
-    background-position: top 75px center;
+  > .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    @media screen and (max-width: 799px) {
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+    @media screen and (min-width: 800px) {
+      flex-flow: row nowrap;
+      justify-content: center;
+    }
   }
-  @media screen and (min-width: 700px) and (max-width: 1169px) {
-    background-size: cover;
-    background-position: top 125px center;
+
+  > .container > .primary {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin: 0 50px 0 50px;
+    @media screen and (min-width: 1000px) {
+      width: 50%;
+    }
   }
-  @media screen and (max-width: 699px) {
+
+  > .container > .primary > .organization {
+    display: flex;
+    justify-content: center;
+
+    @media screen and (max-width: 799px) {
+      flex-flow: row nowrap;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    @media screen and (min-width: 800px) {
+      flex-flow: row nowrap;
+      padding-bottom: 50px;
+    }
+
+    > .logo {
+      margin-right: 20px;
+      @media screen and (max-width: 799px) {
+        width: 60px;
+        height: 60px;
+        padding-top: 5px;
+      }
+    }
+  }
+
+  > .container > .primary > .login-container {
+    text-align: center;
+    > .login {
+      @media screen and (max-width: 799px) {
+        min-width: 100px;
+        min-height: 40px;
+      }
+      @media screen and (min-width: 800px) {
+        min-width: 150px;
+        min-height: 50px;
+      }
+    }
+  }
+
+  > .container > .secondary {
+    flex-grow: 1;
+    background: url('${config.assets.domain}/hero_large.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;
-    background-position: bottom;
-  }
 
-  .outer {
-    display: inline-flex;
-    background-color: ${styles.background_1};
-    padding: 20px;
-    border-radius: 10px 5px 10px 5px;
-    opacity: 0.9;
-  }
-
-  .organization > * {
-    margin: 5px 0 5px 0;
-  }
-
-  .application {
-    margin-top: 30px;
-    > * {
-      margin: 10px 0 10px 0;
-    }
-  }
-
-  .logo-container {
-
-    @media screen and (min-width: 1650px) {
-      margin-top: 60px;
-    }
-
-    @media screen and (max-width: 1649px and min-width: 1470px;) {
+    @media screen and (max-width: 799px) {
+      width: 100%;
       margin-top: 20px;
+      margin-bottom: 20px;
     }
-
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-
-    > * {
-      margin: 0 5px 0 5px;
+    @media screen and (min-width: 800px) {
+      margin-top: 10%;
+      margin-bottom: 10%;
+      margin-right: 10%;
     }
-
-    > .org-abbreviation {
-      margin-top: 20px;
-    }
-  }
-
-  .logIn {
-    min-width: 100px;
   }
 `;
 
