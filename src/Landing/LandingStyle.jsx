@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { styles } from '../theme/Theme.jsx';
 import config from 'appConfig';
 
 const LandingStyle = styled.div`
@@ -7,7 +6,11 @@ const LandingStyle = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
+
+  div > nav > .logo {
+    display: none;
+  }
 
   > .container {
     display: flex;
@@ -84,8 +87,8 @@ const LandingStyle = styled.div`
       margin-bottom: 20px;
     }
     @media screen and (min-width: 800px) {
-      margin-top: 10%;
-      margin-bottom: 10%;
+      margin-top: 5%;
+      margin-bottom: 5%;
       margin-right: 10%;
     }
   }
