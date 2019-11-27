@@ -16,7 +16,10 @@ const UrlListingStyle = styled.div`
     }
     @media screen and (max-width: 799px) {
       flex-flow: column nowrap;
-      > * {
+    }
+    @media screen and (min-width: 800px) {
+      > input {
+        margin-right: 20px;
       }
     }
   }

@@ -15,7 +15,7 @@ export default function NavigationView() {
   }
   return (
     <nav>
-      <Link to='/' className='logo'>SCIL</Link>
+      <Link to='/' className='logo'>growme.fyi</Link>
       <ul>
         {links}
       </ul>

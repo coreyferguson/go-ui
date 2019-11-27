@@ -12,10 +12,18 @@ export default styled.div`
   }
 
   > nav {
-    margin: 20px 0 20px 0;
-    height: 50px;
-    padding: 0 20px 0 20px;
     display: flex;
+
+    @media screen and (max-width: 799px) {
+      height: 40px;
+      margin: 5px 0 15px 0;
+      padding: 0 5px 0 5px;
+    }
+    @media screen and (min-width: 800px) {
+      height: 50px;
+      margin: 20px 0 20px 0;
+      padding: 0 20px 0 20px;
+    }
   }
 
   > nav > * {
@@ -42,6 +50,13 @@ export default styled.div`
     align-items: center;
     background-image: url('${config.assets.domain}/logo_medium.jpg');
     background-repeat: no-repeat;
-    padding-left: 60px;
+
+    @media screen and (max-width: 799px) {
+      padding-left: 50px;
+      background-size: 40px;
+    }
+    @media screen and (min-width: 800px) {
+      padding-left: 60px;
+    }
   }
 `;

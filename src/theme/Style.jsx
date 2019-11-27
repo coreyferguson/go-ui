@@ -49,7 +49,7 @@ export default styles => {
       border-width: 0;
       color: ${styles.foreground_2};
       padding: 5px 10px 5px 10px;
-      margin: 0 5px 5px 5px;
+      margin: 0 0 5px 0;
       border-bottom: 1px solid ${styles.foreground_2};
       @media screen and (max-width: 799px) {
         font-size: ${styles.font_size_cozy};
