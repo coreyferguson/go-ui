@@ -10,7 +10,7 @@ provider:
   region: us-west-2
 
 custom:
-  certificateArn: arn:aws:acm:us-east-1:863138142000:certificate/2bf0b9d2-f40e-409d-b963-a88e59e51d3a
+  certificateArn: arn:aws:acm:us-east-1:863138142000:certificate/ad5d5bcc-f3fa-43da-ae35-1cce656db82a
 
 resources:
   Resources:

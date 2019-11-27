@@ -1,5 +1,6 @@
-
 cloudFrontAlias: growme.fyi
 cors:
   allowedOrigins:
     - https://growme.fyi
+userPoolId: us-west-2_1miVK7F7Y
+identityPoolId: us-west-2:3755a091-5105-4c6f-87ef-61533fda2d4c

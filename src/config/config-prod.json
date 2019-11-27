@@ -3,15 +3,15 @@
     "domain": "https://go-assets.growme.fyi"
   },
   "auth": {
-    "identityPoolId": "",
+    "identityPoolId": "us-west-2:3755a091-5105-4c6f-87ef-61533fda2d4c",
     "userPool": {
       "client": {
-        "id": "",
+        "id": "4380bhpm77lnmj1d6t1ioq05a6",
         "name": "go",
-        "redirectCallback": "https://go.growme.fyi/oauth/callback",
-        "redirectSignout": "https://go.growme.fyi/oauth/signout"
+        "redirectCallback": "https://growme.fyi/oauth/callback",
+        "redirectSignout": "https://growme.fyi/oauth/signout"
       },
-      "id": "",
+      "id": "us-west-2_1miVK7F7Y",
       "webDomain": "auth.growme.fyi"
     }
   },

@@ -1,8 +1,9 @@
-import React from 'react';
+import Button from '../../form/Button.jsx';
+import config from 'appConfig';
 import DefaultPageContainer from '../../pageContainers/DefaultPageContainer';
+import React from 'react';
 import SimpleMessagePageContainer from '../../pageContainers/SimpleMessagePageContainer';
 import urlService from '../urlService';
-import config from 'appConfig';
 
 export default function UrlListingView() {
   const [ urls, setUrls ] = React.useState({ items: [] });
@@ -59,7 +60,7 @@ function showZeroState(urls) {
 
 function showUrls(urls) {
   if (!urls || !urls.items || urls.items.length === 0) return;
-  const lis = urls.items.map(vanity => <li key={vanity} onClick={() => copy(vanity)}>{vanity}</li>);
+  const lis = urls.items.map(vanity => <li key={vanity}><Button onClick={() => copy(vanity)}>{vanity}</Button></li>);
   return (
     <ul className='url-listing'>
       {lis}

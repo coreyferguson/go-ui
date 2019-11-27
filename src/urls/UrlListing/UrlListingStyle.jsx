@@ -38,10 +38,14 @@ const UrlListingStyle = styled.div`
     flex-flow: row wrap;
 
     > li {
-      border-radius: ${styles.border_radius};
-      background-color: ${styles.background_2};
-      padding: 1em;
-      margin: 0.25em;
+      > button {
+        background-color: ${styles.background_2};
+        padding: 1em;
+        margin: 0.25em;
+      }
+      > button:hover, > button:focus {
+        border-bottom: 2px solid ${styles.foreground_2};
+      }
     }
   }
 `;

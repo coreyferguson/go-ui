@@ -49,10 +49,10 @@ export default styles => {
       border-width: 0;
       color: ${styles.foreground_2};
       padding: 5px 10px 5px 10px;
-      margin: 0 0 5px 0;
-      border-bottom: 1px solid ${styles.foreground_2};
+      border-bottom: 2px solid ${styles.primary};
       @media screen and (max-width: 799px) {
         font-size: ${styles.font_size_cozy};
+        margin: 0 0 5px 0;
       }
       @media screen and (min-width: 800px) {
         font-size: ${styles.font_size_spacious};
@@ -61,7 +61,7 @@ export default styles => {
 
     input[type='text']:focus {
       outline: 0;
-      border-bottom: 1px solid ${styles.primary};
+      border-bottom: 2px solid ${styles.foreground_2};
     }
 
     button {
@@ -80,8 +80,13 @@ export default styles => {
       }
     }
 
-    button:hover {
+    button:hover, button:focus {
       background-color: ${styles.primary_darken_2};
+      outline: none;
+    }
+
+    button:focus {
+      border-bottom: 2px solid ${styles.foreground_2};
     }
   `;
 }
