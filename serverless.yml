@@ -53,6 +53,12 @@ resources:
                 - !Ref S3BucketWebApp
                 - /*
 
+    CloudFrontOriginAccessIdentityWebApp:
+      Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+      Properties:
+        CloudFrontOriginAccessIdentityConfig:
+          Comment: CloudFront access to S3 bucket containing WebApp
+
     CloudFrontWebApp:
       Type: AWS::CloudFront::Distribution
       Properties:
@@ -97,13 +103,14 @@ resources:
                   - TLSv1
                   - TLSv1.1
                   - TLSv1.2
-              DomainName: !GetAtt S3BucketWebApp.RegionalDomainName
+              DomainName: !Select [ 1, !Split [ 'http://', !GetAtt S3BucketWebApp.WebsiteURL ] ]
               Id: !Ref S3BucketWebApp
           PriceClass: PriceClass_100
           ViewerCertificate:
             AcmCertificateArn: ${self:custom.certificateArn}
             MinimumProtocolVersion: TLSv1.2_2018
             SslSupportMethod: sni-only
+      DependsOn: CloudFrontOriginAccessIdentityWebApp
 
     Route53RecordSetAlias:
       Type: AWS::Route53::RecordSet
