@@ -1,6 +1,6 @@
 {
   "assets": {
-    "domain": "https://go-assets.growme.fyi"
+    "domain": "https://assets.growme.fyi"
   },
   "auth": {
     "identityPoolId": "us-west-2:3755a091-5105-4c6f-87ef-61533fda2d4c",
