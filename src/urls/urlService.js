@@ -2,6 +2,8 @@ import sessionService from '../auth/sessionService';
 import config from 'appConfig';
 import AWS from 'aws-sdk';
 
+const webAssets = ['index.html', 'main.bundle.js', 'favicon.ico'];
+
 export class UrlService {
   constructor() {
     this._configureAwsPromise = undefined;
@@ -18,7 +20,7 @@ export class UrlService {
     }).promise();
     return {
       items: list.Contents
-        .filter(item => item.Key !== 'index.html' && item.Key !== 'main.bundle.js')
+        .filter(item => !webAssets.includes(item.Key))
         .map(item => item.Key),
       hasNext: list.IsTruncated,
       next: list.NextContinuationToken

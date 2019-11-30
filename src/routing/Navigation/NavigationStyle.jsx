@@ -27,16 +27,24 @@ export default styled.div`
   }
 
   > nav > * {
-    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-right:
+  }
+
+  > nav > *:not(:last-child) {
+    margin-right: 20px;
   }
 
   > nav > ul {
+    flex-grow: 1;
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-flow: row-reverse nowrap;
     align-items: center;
+    justify-content: flex-start;
 
     a:hover {
       color: ${styles.background_1};

@@ -15,8 +15,13 @@
       "webDomain": "auth.growme.fyi"
     }
   },
+  "flash": {
+    "url": "https://flash.growme.fyi"
+  },
   "urls": {
-    "s3Bucket": "growme-go-ui"
+    "s3Bucket": "growme-go-prod-ui",
+    "domain": "https://growme.fyi",
+    "redirectDomain": "https://growme.fyi"
   },
   "stage": "prod"
 }

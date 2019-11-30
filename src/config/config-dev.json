@@ -15,6 +15,9 @@
       "webDomain": "auth-dev.growme.fyi"
     }
   },
+  "flash": {
+    "url": "https://flash-dev.growme.fyi"
+  },
   "urls": {
     "s3Bucket": "growme-go-dev-ui",
     "domain": "https://dev.growme.fyi",
