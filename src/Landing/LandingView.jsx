@@ -10,7 +10,7 @@ const logoSrc = config.assets.domain + '/logo_large.jpg';
 export default function LandingView() {
   return (
     <React.Fragment>
-      <Navigation />
+      <Navigation showLogo={false} />
 
       <div className='container'>
 

@@ -9,7 +9,8 @@ const envConfig = path.resolve(__dirname, `src/config/config-${stage}.json`);
 module.exports = {
   entry: './src/index.js',
   resolve: {
-    alias: { appConfig: envConfig }
+    alias: { appConfig: envConfig },
+    extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx']
   },
   externals: {
     'aws-sdk': 'AWS'
