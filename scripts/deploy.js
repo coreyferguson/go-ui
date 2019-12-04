@@ -20,5 +20,5 @@ function webpack() {
 
 function synchronize() {
   console.info('Starting synchronize');
-  return exec(`aws s3 sync dist s3://growme-go-${stage}-ui`);
+  return exec(`aws s3 sync dist s3://scil-go-${stage}-ui`);
 }

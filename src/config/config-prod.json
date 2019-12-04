@@ -1,22 +1,24 @@
 {
   "assets": {
-    "domain": "https://go-assets.growme.fyi"
+    "domain": "https://go-assets.scil.help"
   },
   "auth": {
-    "identityPoolId": "",
+    "identityPoolId": "us-west-2:4b03717b-8ac7-4ddc-91e4-d97dea20027b",
     "userPool": {
       "client": {
-        "id": "",
+        "id": "3f4o10m7bshrmka7mgdr0v3kgb",
         "name": "go",
-        "redirectCallback": "https://go.growme.fyi/oauth/callback",
-        "redirectSignout": "https://go.growme.fyi/oauth/signout"
+        "redirectCallback": "https://scil.help/oauth/callback",
+        "redirectSignout": "https://scil.help/oauth/signout"
       },
-      "id": "",
-      "webDomain": "auth.growme.fyi"
+      "id": "us-west-2_WG77RUU1e",
+      "webDomain": "auth.scil.help"
     }
   },
   "urls": {
-    "s3Bucket": "growme-go-ui"
+    "s3Bucket": "scil-go-prod-ui",
+    "domain": "https://scil.help",
+    "redirectDomain": "https://scil.help"
   },
   "stage": "prod"
 }

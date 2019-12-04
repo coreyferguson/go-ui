@@ -1,5 +1,7 @@
 
-cloudFrontAlias: go.growme.fyi
+cloudFrontAlias: scil.help
 cors:
   allowedOrigins:
-    - https://go.growme.fyi
+    - https://scil.help
+userPoolId: us-west-2_WG77RUU1e
+identityPoolId: us-west-2:4b03717b-8ac7-4ddc-91e4-d97dea20027b

@@ -58,7 +58,7 @@ describe('urlService', () => {
                 "StorageClass": "STANDARD"
             }
         ],
-        "Name": "growme-go-dev-ui",
+        "Name": "scil-go-dev-ui",
         "Prefix": "",
         "MaxKeys": 500,
         "CommonPrefixes": [],
