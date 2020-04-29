@@ -1,7 +1,7 @@
 
-cloudFrontAlias: scil.help
+cloudFrontAlias: scil.link
 cors:
   allowedOrigins:
-    - https://scil.help
-userPoolId: us-west-2_WG77RUU1e
-identityPoolId: us-west-2:4b03717b-8ac7-4ddc-91e4-d97dea20027b
+    - https://scil.link
+userPoolId: us-west-2_olWUmstRl
+identityPoolId: us-west-2:8c1b4679-9d46-4706-9cc9-5cdebe916106

@@ -3,7 +3,7 @@ import { styles } from '../theme/Theme.jsx';
 
 const LandingStyle = styled.div`
   text-align: center;
-  background: url('https://go-assets.scil.help/elephants_large.jpg');
+  background: url('https://go-assets.scil.link/elephants_large.jpg');
   background-repeat: no-repeat;
   position: fixed;
   height: 100%;

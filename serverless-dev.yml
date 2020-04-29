@@ -1,8 +1,8 @@
 
-cloudFrontAlias: go-dev.scil.help
+cloudFrontAlias: go-dev.scil.link
 cors:
   allowedOrigins:
-    - https://go-local.scil.help:9000
-    - https://go-dev.scil.help
+    - https://go-local.scil.link:9000
+    - https://go-dev.scil.link
 userPoolId:
 identityPoolId:

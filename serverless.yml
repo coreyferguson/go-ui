@@ -10,7 +10,7 @@ provider:
   region: us-west-2
 
 custom:
-  certificateArn: arn:aws:acm:us-east-1:935522883202:certificate/1ae18cdf-07fc-481a-afda-62510ffc8e4c
+  certificateArn: arn:aws:acm:us-east-1:935522883202:certificate/8e02fdf2-0513-4aa1-be91-6ec8df6ebed7
 
 resources:
   Resources:
@@ -121,7 +121,7 @@ resources:
           # hosted zone for cloud formation
           # https://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region
           HostedZoneId: Z2FDTNDATAQYW2
-        HostedZoneName: scil.help.
+        HostedZoneName: scil.link.
         Name: ${file(./serverless-${self:provider.stage}.yml):cloudFrontAlias}
         Type: 'A'
 

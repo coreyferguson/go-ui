@@ -12,7 +12,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     contentBase: './dist',
-    host: 'go-local.scil.help',
+    host: 'go-local.scil.link',
     port: 9000,
     https: true,
     historyApiFallback: {
