@@ -12,7 +12,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     contentBase: './dist',
-    host: 'go-local.growme.fyi',
+    host: 'local.wayne4m.com',
     port: 9000,
     https: true,
     historyApiFallback: {

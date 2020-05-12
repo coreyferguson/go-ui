@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import sessionService from '../sessionService';
 import clientService from '../../clientService';
-import SimpleMessagePageContainer from '../../pageContainers/SimpleMessagePageContainer';
 
 export default function OAuthCallbackView() {
   useEffect(() => {
@@ -9,7 +8,5 @@ export default function OAuthCallbackView() {
       clientService.navigate('/');
     });
   });
-  return (
-    <SimpleMessagePageContainer><h1>loading</h1></SimpleMessagePageContainer>
-  );
+  return <h1>loading</h1>;
 }

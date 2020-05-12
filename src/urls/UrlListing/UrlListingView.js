@@ -1,8 +1,9 @@
 import React from 'react';
-import DefaultPageContainer from '../../pageContainers/DefaultPageContainer';
-import SimpleMessagePageContainer from '../../pageContainers/SimpleMessagePageContainer';
 import urlService from '../urlService';
 import config from 'appConfig';
+import Navigation from '../../Navigation';
+import Style from './UrlListingStyle';
+import Button from '@bit/overattribution.growme.button';
 
 export default function UrlListingView() {
   const [ urls, setUrls ] = React.useState({ items: [] });
@@ -13,14 +14,13 @@ export default function UrlListingView() {
     setLoading(false);
   }) }, []);
   const onCreate = e => handleCreate({ e, refVanity, refUrl, urls, setUrls });
-  if (isLoading) return <SimpleMessagePageContainer><h1>loading</h1></SimpleMessagePageContainer>
+  if (isLoading) return <h1>loading</h1>;
   return (
-    <DefaultPageContainer>
-      <div>
-        {showUrlCreation(onCreate, refVanity, refUrl)}
-        {showZeroState(urls) || showUrls(urls)}
-      </div>
-    </DefaultPageContainer>
+    <Style>
+      <Navigation />
+      {showUrlCreation(onCreate, refVanity, refUrl)}
+      {showZeroState(urls) || showUrls(urls)}
+    </Style>
   );
 }
 
@@ -42,7 +42,7 @@ function showUrlCreation(onCreate, refVanity, refUrl) {
     <form className='create-url' onSubmit={onCreate}>
       <input className='vanity' type='text' placeholder='vanity' ref={refVanity} />
       <input className='url' type='text' placeholder='url' ref={refUrl} />
-      <button type='submit'>create</button>
+      <Button className='button'>create</Button>
     </form>
   );
 }

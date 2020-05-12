@@ -1,7 +1,7 @@
 
-service: go-ui
+service: wayne4m-go-ui
 
-frameworkVersion: "=1.57.0"
+frameworkVersion: "=1.70.0"
 
 provider:
   name: aws
@@ -10,7 +10,8 @@ provider:
   region: us-west-2
 
 custom:
-  certificateArn: arn:aws:acm:us-east-1:863138142000:certificate/2bf0b9d2-f40e-409d-b963-a88e59e51d3a
+  certificateArn: arn:aws:acm:us-east-1:935522883202:certificate/ecbde0ad-d555-4654-911c-3eba9712a2e6
+  domain: wayne4m.com
 
 resources:
   Resources:
@@ -18,7 +19,7 @@ resources:
     S3BucketWebApp:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: growme-go-${self:provider.stage}-ui
+        BucketName: ${self:custom.domain}-go-${self:provider.stage}-ui
         AccessControl: PublicRead
         WebsiteConfiguration:
           ErrorDocument: index.html
@@ -114,7 +115,7 @@ resources:
           # hosted zone for cloud formation
           # https://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region
           HostedZoneId: Z2FDTNDATAQYW2
-        HostedZoneName: growme.fyi.
+        HostedZoneName: ${self:custom.domain}.
         Name: ${file(./serverless-${self:provider.stage}.yml):cloudFrontAlias}
         Type: 'A'
 
@@ -135,7 +136,7 @@ resources:
                 ForAnyValue:StringLike:
                   cognito-identity.amazonaws.com:amr: authenticated
         Policies:
-          - PolicyName: growme_auth_${self:provider.stage}
+          - PolicyName: ${self:custom.domain}_auth_${self:provider.stage}
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -162,6 +163,6 @@ resources:
       Type: AWS::Cognito::UserPoolGroup
       Properties:
         Description: Creators of vanity URLs
-        GroupName: go-${self:provider.stage}-ui-creator
+        GroupName: go-${self:custom.domain}-${self:provider.stage}-ui-creator
         RoleArn: !GetAtt IAMRoleCreator.Arn
         UserPoolId: ${file(./serverless-${self:provider.stage}.yml):userPoolId}
