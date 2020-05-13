@@ -17,8 +17,8 @@
   },
   "urls": {
     "s3Bucket": "wayne4m.com-go-dev-ui",
-    "domain": "https://go-dev.wayne4m.com",
-    "redirectDomain": "https://go-dev.wayne4m.com"
+    "domain": "https://dev.wayne4m.com",
+    "redirectDomain": "https://dev.wayne4m.com"
   },
   "stage": "dev"
 }

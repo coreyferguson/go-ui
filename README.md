@@ -57,3 +57,7 @@ Go is a serverless URL Shortener.
 TODO: Delete temporary A-record in Route 53.
 TODO: Remove "flash" references from deployments that don't require it.
   TODO: Remove "flash" references from growme-auth/build/impl/cognitoIdentityPoolProvider.js
+
+
+TODO: https://serverfault.com/questions/450940/why-s3-website-redirect-location-is-not-followed-by-cloudfront
+  - CloudFront to point to s3 static website address

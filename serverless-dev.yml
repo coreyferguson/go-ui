@@ -1,5 +1,5 @@
 
-cloudFrontAlias: go-dev.${self:custom.domain}
+cloudFrontAlias: dev.${self:custom.domain}
 cors:
   allowedOrigins:
     - https://local.${self:custom.domain}:9000
