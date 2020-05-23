@@ -75,12 +75,14 @@ const UrlListingStyle = styled.div`
       margin: ${styles.sizes.padding_spacious};
     }
 
-    > li {
-      border-radius: ${styles.styles.border_radius};
+    > li button {
       background-color: ${styles.colors.background_1};
-      padding: 1em;
-      margin: 0.25em;
-      cursor: pointer;
+      height: 70px;
+    }
+
+    > li button:focus, > li button:hover {
+        background-color: ${styles.colors.foreground};
+        color: ${styles.colors.background};
     }
   }
 `;

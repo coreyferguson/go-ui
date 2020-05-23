@@ -122,7 +122,7 @@ resources:
     IAMRoleCreator:
       Type: AWS::IAM::Role
       Properties:
-        RoleName: go-${self:provider.stage}-ui-url-creator
+        RoleName: ${self:custom.domain}-go-${self:provider.stage}-ui-url-creator
         AssumeRolePolicyDocument:
           Version: "2012-10-17"
           Statement:

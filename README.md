@@ -27,16 +27,15 @@ Go is a serverless URL Shortener.
   - Update domain references in `src/index.html`
   - Update domain references in `src/config/config-local.json`
   - Update domain references in `src/config/config-dev.json`
+  - Update domain references in `src/config/config-prod.json`
   - Update domain references in `webpack.dev.js`
-  - Temporarily create A-record in Route53 to point to dev ui environment.
+  - After deploy, temporarily create A-record in Route53 to point to dev ui environment.
 
 4. Deploy [go-assets](https://github.com/coreyferguson/go-assets)
   - Change properties in `serverless.yml`
     - `service`: Give a unique name for your domain and this service, e.g. `corey-go-assets`
     - `custom.certificateArn`: Certificate from step 2.
     - `custom.domain`: Domain name registered at step 1, e.g. `corey.com`
-  - Change properties in `serverless.dev.yml`
-    - TODO. Is this necessary? I can parameterize domain right?
   - Replace images
   - Run `stage=dev npm run deploy` to test on development.
   - Update domain references in `scripts/deploy.js`

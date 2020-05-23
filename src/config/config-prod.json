@@ -1,22 +1,24 @@
 {
   "assets": {
-    "domain": "https://go-assets.growme.fyi"
+    "domain": "https://go-assets.wayne4m.com"
   },
   "auth": {
-    "identityPoolId": "",
+    "identityPoolId": "us-west-2:9cae5b35-5229-4b5e-b950-cc037632d467",
     "userPool": {
       "client": {
-        "id": "",
+        "id": "27qjlvsb5nbtj0250qcnekkkou",
         "name": "go",
-        "redirectCallback": "https://go.growme.fyi/oauth/callback",
-        "redirectSignout": "https://go.growme.fyi/oauth/signout"
+        "redirectCallback": "https://wayne4m.com/oauth/callback",
+        "redirectSignout": "https://wayne4m.com/oauth/signout"
       },
-      "id": "",
-      "webDomain": "auth.growme.fyi"
+      "id": "us-west-2_ho8vXEHNX",
+      "webDomain": "auth.wayne4m.com"
     }
   },
   "urls": {
-    "s3Bucket": "growme-go-ui"
+    "s3Bucket": "wayne4m.com-go-prod-ui",
+    "domain": "https://wayne4m.com",
+    "redirectDomain": "https://wayne4m.com"
   },
   "stage": "prod"
 }

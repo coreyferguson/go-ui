@@ -1,7 +1,7 @@
 
-cloudFrontAlias: go.growme.fyi
+cloudFrontAlias: wayne4m.com
 cors:
   allowedOrigins:
-    - https://go.growme.fyi
-userPoolId:
-identityPoolId:
+    - https://wayne4m.com
+userPoolId: us-west-2_ho8vXEHNX
+identityPoolId: us-west-2:9cae5b35-5229-4b5e-b950-cc037632d467

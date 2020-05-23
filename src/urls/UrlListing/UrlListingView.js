@@ -59,7 +59,7 @@ function showZeroState(urls) {
 
 function showUrls(urls) {
   if (!urls || !urls.items || urls.items.length === 0) return;
-  const lis = urls.items.map(vanity => <li key={vanity} onClick={() => copy(vanity)}>{vanity}</li>);
+  const lis = urls.items.map(vanity => <li key={vanity}><Button onClick={() => copy(vanity)}>{vanity}</Button></li>);
   return (
     <ul className='url-listing'>
       {lis}
